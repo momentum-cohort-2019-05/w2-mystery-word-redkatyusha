@@ -1,2 +1,5 @@
-# Open words.txt and read file to list
-with open("words.txt") as 
+word_list = [line.rstrip('\n') for line in open("words.txt")]
+
+import random
+
+print(random.choice(word_list))
