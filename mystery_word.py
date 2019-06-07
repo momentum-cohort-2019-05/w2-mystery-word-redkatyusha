@@ -7,21 +7,22 @@ easy_list = [word for word in word_list if len(word) <= 6 and len(word) >= 4]
 medium_list = [word for word in word_list if len(word) <= 8 and len(word) >= 6]
 hard_list = [word for word in word_list if len(word) <= 12 and len(word) >= 8]
 killdozer_list = [word for word in word_list if len(word) > 12]
+word = "blah"
 
 
 print("it is a mystery " + "👻")
 
 
-def choose_difficulty(difficulty):
-    if difficulty == "e" or difficulty == "E":
+def choose_difficulty(str):
+    if str == "e" or str == "E":
         word = random.choice(easy_list)
-    elif difficulty == "m" or difficulty == "M":
+    elif str == "m" or str == "M":
         word = random.choice(medium_list)
-    elif difficulty == "h" or difficulty == "H":
+    elif str == "h" or str == "H":
         word = random.choice(hard_list)
-    elif difficulty == "k" or difficulty == "K":
+    elif str == "k" or str == "K":
         word = random.choice(killdozer_list)
-    elif difficulty == "q" or difficulty == "Q":
+    elif str == "q" or str == "Q":
         print("Play again later!")
         quit
     else:
@@ -33,3 +34,4 @@ def choose_difficulty(difficulty):
 
 difficulty = input("(E)asy, (M)edium, (H)ard, (K)illdozer, or (Q)uit? ")
 choose_difficulty(difficulty)
+print(word)
