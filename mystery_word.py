@@ -1,20 +1,18 @@
 # the below chunk of text will strip the new lines from words.txt, import them into a list, and then use random to pull a random word from said list
 
-import re
 import random
 word_list = [line.rstrip('\n') for line in open("words.txt")]
 easy_list = [word for word in word_list if len(word) <= 6 and len(word) >= 4]
 medium_list = [word for word in word_list if len(word) <= 8 and len(word) >= 6]
 hard_list = [word for word in word_list if len(word) <= 12 and len(word) >= 8]
 killdozer_list = [word for word in word_list if len(word) > 12]
-word = "blah"
 
 
 print("it is a mystery 👻")
 
 
 def choose_difficulty(str):
-    global word
+#    global word
 
     if str == "e" or str == "E":
         word = random.choice(easy_list)
@@ -32,30 +30,29 @@ def choose_difficulty(str):
         difficulty = input(
             "(E)asy, (M)edium, (H)ard, (K)illdozer, or (Q)uit? ")
         choose_difficulty(difficulty)
-
-
-def start_over():
-    global new_game
-
-    new_game = input("Try again? Y/N: ")
-    if new_game == "y" or new_game == "Y":
-        difficulty = input(
-            "(E)asy, (M)edium, (H)ard, (K)illdozer, or (Q)uit? ")
-        choose_difficulty(difficulty)
-        play_game()
-    elif new_game == "n" or new_game == "N":
-        print("Thanks for playing!")
-        quit
-    else:
-        print("Huh? You have pressed an incorrect key.")
-        start_over()
+    return word
 
 
 difficulty = input("(E)asy, (M)edium, (H)ard, (K)illdozer, or (Q)uit? ")
 choose_difficulty(difficulty)
 
 
-def play_game():
+def start_over():
+    new_game = input("Try again? Y/N: ")
+    if new_game == "y" or new_game == "Y":
+        difficulty = input(
+            "(E)asy, (M)edium, (H)ard, (K)illdozer, or (Q)uit? ")
+        play_game(choose_difficulty(difficulty))
+    elif new_game == "n" or new_game == "N":
+        print("Thanks for playing!")
+        quit
+    else:
+        print("Huh? You have pressed an incorrect key.")
+        start_over()
+    return new_game
+
+
+def play_game(word):
     guesses = ""
     lives = 8
 
@@ -88,4 +85,4 @@ def play_game():
                 start_over()
 
 
-play_game()
+play_game(choose_difficulty(difficulty))
