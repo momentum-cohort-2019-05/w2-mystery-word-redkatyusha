@@ -34,16 +34,50 @@ def choose_difficulty(str):
         choose_difficulty(difficulty)
 
 
+def start_over():
+    global new_game
+
+    new_game = input("Try again? Y/N: ")
+    if new_game == "y" or new_game == "Y":
+        difficulty = input("(E)asy, (M)edium, (H)ard, (K)illdozer, or (Q)uit? ")
+        choose_difficulty(difficulty)
+    elif new_game == "n" or new_game == "N":
+        print("Thanks for playing!")
+        quit
+    else:
+        print("Huh? You have pressed an incorrect key.")
+        start_over()
+
+
 difficulty = input("(E)asy, (M)edium, (H)ard, (K)illdozer, or (Q)uit? ")
 choose_difficulty(difficulty)
-# print(word)
 
+guesses = ""
+turns = 8
 
-def split_word(str):
-    global word_chars
+while turns > 0:
+    failed = 0
 
-    word_chars = [char for char in str]
+    for char in word:
+        if char in guesses:
+            print(char)
+        else:
+            print("_")
+            failed += 1
 
+    if failed == 0:
+        print("You won!")
+        start_over()
 
-split_word(word)
-print(word_chars)
+    guess = input("Guess a character: ") 
+    guesses += guess                    
+
+    if guess not in word:  
+        turns -= 1        
+        print("Wrong...")
+ 
+        print("You have ", turns, " more guesses.")
+
+        if turns == 0:           
+            print("You lose! You get nothing! Good day, sir!")
+            start_over()
