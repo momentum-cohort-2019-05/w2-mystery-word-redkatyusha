@@ -10,12 +10,12 @@ killdozer_list = [word for word in word_list if len(word) > 12]
 word = "blah"
 
 
-print("it is a mystery " + "👻")
+print("it is a mystery 👻")
 
 
 def choose_difficulty(str):
     global word
-    
+
     if str == "e" or str == "E":
         word = random.choice(easy_list)
     elif str == "m" or str == "M":
@@ -36,4 +36,14 @@ def choose_difficulty(str):
 
 difficulty = input("(E)asy, (M)edium, (H)ard, (K)illdozer, or (Q)uit? ")
 choose_difficulty(difficulty)
-print(word)
+# print(word)
+
+
+def split_word(str):
+    global word_chars
+
+    word_chars = [char for char in str]
+
+
+split_word(word)
+print(word_chars)
