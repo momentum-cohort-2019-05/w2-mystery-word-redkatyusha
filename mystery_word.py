@@ -80,9 +80,10 @@ def play_game():
             lives -= 1
             print("Wrong...")
 
-            print("You have ", lives, " more guesses.")
+            print("You have", lives, "more guesses.")
 
             if lives == 0:
+                print("The word was", word + ".")
                 print("You lose! You get nothing! Good day, sir!")
                 start_over()
 
