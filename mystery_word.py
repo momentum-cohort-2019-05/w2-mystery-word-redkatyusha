@@ -28,7 +28,7 @@ def choose_difficulty(difficulty):
         print(random.choice(killdozer_list))
     elif difficulty == "q" or difficulty == "Q":
         print("Play again later!")
-        pass
+        quit
     else:
         print("That's not a difficulty. Try again.")
         difficulty = input(
