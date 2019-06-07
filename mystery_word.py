@@ -57,9 +57,9 @@ choose_difficulty(difficulty)
 
 def play_game():
     guesses = ""
-    turns = 8
+    lives = 8
 
-    while turns > 0:
+    while lives > 0:
         failed = 0
 
         for char in word:
@@ -77,12 +77,12 @@ def play_game():
         guesses += guess
 
         if guess not in word:
-            turns -= 1
+            lives -= 1
             print("Wrong...")
 
-            print("You have ", turns, " more guesses.")
+            print("You have ", lives, " more guesses.")
 
-            if turns == 0:
+            if lives == 0:
                 print("You lose! You get nothing! Good day, sir!")
                 start_over()
 
