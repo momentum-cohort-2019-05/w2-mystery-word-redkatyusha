@@ -39,8 +39,10 @@ def start_over():
 
     new_game = input("Try again? Y/N: ")
     if new_game == "y" or new_game == "Y":
-        difficulty = input("(E)asy, (M)edium, (H)ard, (K)illdozer, or (Q)uit? ")
+        difficulty = input(
+            "(E)asy, (M)edium, (H)ard, (K)illdozer, or (Q)uit? ")
         choose_difficulty(difficulty)
+        play_game()
     elif new_game == "n" or new_game == "N":
         print("Thanks for playing!")
         quit
@@ -52,32 +54,37 @@ def start_over():
 difficulty = input("(E)asy, (M)edium, (H)ard, (K)illdozer, or (Q)uit? ")
 choose_difficulty(difficulty)
 
-guesses = ""
-turns = 8
 
-while turns > 0:
-    failed = 0
+def play_game():
+    guesses = ""
+    turns = 8
 
-    for char in word:
-        if char in guesses:
-            print(char)
-        else:
-            print("_")
-            failed += 1
+    while turns > 0:
+        failed = 0
 
-    if failed == 0:
-        print("You won!")
-        start_over()
+        for char in word:
+            if char in guesses:
+                print(char)
+            else:
+                print("_")
+                failed += 1
 
-    guess = input("Guess a character: ") 
-    guesses += guess                    
-
-    if guess not in word:  
-        turns -= 1        
-        print("Wrong...")
- 
-        print("You have ", turns, " more guesses.")
-
-        if turns == 0:           
-            print("You lose! You get nothing! Good day, sir!")
+        if failed == 0:
+            print("You won!")
             start_over()
+
+        guess = input("Guess a character: ")
+        guesses += guess
+
+        if guess not in word:
+            turns -= 1
+            print("Wrong...")
+
+            print("You have ", turns, " more guesses.")
+
+            if turns == 0:
+                print("You lose! You get nothing! Good day, sir!")
+                start_over()
+
+
+play_game()
