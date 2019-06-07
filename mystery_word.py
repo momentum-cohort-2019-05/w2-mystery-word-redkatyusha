@@ -10,22 +10,17 @@ killdozer_list = [word for word in word_list if len(word) > 12]
 
 
 print("it is a mystery " + "👻")
-# print(random.choice(word_list))
-# print(random.choice(easy_list))
-# print(random.choice(medium_list))
-# print(random.choice(hard_list))
-# print(random.choice(killdozer_list))
 
 
 def choose_difficulty(difficulty):
     if difficulty == "e" or difficulty == "E":
-        print(random.choice(easy_list))
+        word = random.choice(easy_list)
     elif difficulty == "m" or difficulty == "M":
-        print(random.choice(medium_list))
+        word = random.choice(medium_list)
     elif difficulty == "h" or difficulty == "H":
-        print(random.choice(hard_list))
+        word = random.choice(hard_list)
     elif difficulty == "k" or difficulty == "K":
-        print(random.choice(killdozer_list))
+        word = random.choice(killdozer_list)
     elif difficulty == "q" or difficulty == "Q":
         print("Play again later!")
         quit
