@@ -12,8 +12,6 @@ print("it is a mystery 👻")
 
 
 def choose_difficulty(str):
-#    global word
-
     if str == "e" or str == "E":
         word = random.choice(easy_list)
     elif str == "m" or str == "M":
